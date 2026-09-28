@@ -1,0 +1,39 @@
+python -m uvicorn server:app --reload
+
+python server.py
+
+http://localhost:8000/docs#/default/run_agent_endpoint_run_agent_post
+
+
+
+in
+
+
+{
+  "goal": "Did employee 1006 punch in today? If not, check employee 1382."
+  
+  
+  
+}
+
+github email account
+
+loca
+
+-------
+curl -X 'POST' \
+  'http://localhost:8000/run-agent' \
+  -H 'accept: */*' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "goal": "Did employee 1006 punch in today? If not, check employee 1382."
+}'
+
+readme.md file
+
+requestjosan
+response json
+
+
+D:\Program Files\Microsoft VS Code\04c0d99f4f\resources\app\node_modules\@vscode\sandbox-runtime\node_modules\commander
+
