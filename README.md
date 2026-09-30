@@ -49,3 +49,29 @@ VITE_API_URL=http://localhost:8000
 ```bash
 npm run build
 ```
+
+
+### Request JSON
+
+```json
+{
+  "goal": "Did employee 1006 punch in today? If not, check employee 1382."
+}
+```
+
+### Response JSON
+
+```json
+"string"
+```
+
+### cURL Example
+
+```bash
+curl -X POST "http://localhost:8000/run-agent" \
+-H "accept: */*" \
+-H "Content-Type: application/json" \
+-d '{
+  "goal": "Did employee 1006 punch in today? If not, check employee 1382."
+}'
+```
