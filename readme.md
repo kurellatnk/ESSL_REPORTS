@@ -1,18 +1,55 @@
 # ESSL Reports
 
-## Overview
+Monorepo starter with a React + Vite frontend and a FastAPI backend.
 
-Employee attendance reporting and AI agent integration.
+## Requirements
 
-## API Endpoints
+- Node.js 20.19+ or 22.12+
+- Python 3.10+
 
-| Method | Endpoint | Description |
-|----------|----------|-------------|
-| GET | `/` | Health Check |
-| POST | `/run-agent` | Run Agent |
-| GET | `/test-essl/{employee_id}` | Test ESSL Connection |
+## Run locally
 
-## Run Agent
+On Apple Silicon, if Node reports `Bad CPU type in executable`, put the native Homebrew installation first on `PATH`:
+
+```bash
+export PATH="/opt/homebrew/bin:$PATH"
+```
+
+Install frontend dependencies from the repository root:
+
+```bash
+npm install
+```
+
+Start the API in one terminal:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r backend/requirements.txt
+npm run dev:api
+```
+
+Start the frontend in another terminal:
+
+```bash
+npm run dev
+```
+
+Open the Vite URL shown in the terminal. The frontend checks `GET http://localhost:8000/health` and displays the API status. FastAPI's interactive API docs are available at `http://localhost:8000/docs`.
+
+To point the frontend at another API origin, create `frontend/.env.local` with:
+
+```env
+VITE_API_URL=http://localhost:8000
+```
+
+## Build
+
+```bash
+npm run build
+```
+
 
 ### Request JSON
 
@@ -37,40 +74,4 @@ curl -X POST "http://localhost:8000/run-agent" \
 -d '{
   "goal": "Did employee 1006 punch in today? If not, check employee 1382."
 }'
-```
-
-## Local Setup
-
-```bash
-npm install
-```
-
-```bash
-python -m venv .venv
-```
-
-```bash
-pip install -r backend/requirements.txt
-```
-
-```bash
-npm run dev:api
-```
-
-```bash
-npm run dev
-```
-
-## Documentation
-
-Swagger UI:
-
-```text
-http://localhost:8000/docs
-```
-
-OpenAPI:
-
-```text
-http://localhost:8000/openapi.json
 ```
